@@ -3,7 +3,7 @@ const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
 const app = express();
-const PORT = 3000;  
+const PORT = process.env.PORT || 3000;
 
 puppeteer.use(StealthPlugin())
 
