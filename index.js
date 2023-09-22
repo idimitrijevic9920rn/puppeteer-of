@@ -100,7 +100,9 @@ app.listen(PORT, () => {
 function checkOrigin(origin) {
     const allowedOrigins = [
       "https://area3.pages.dev",
-      "https://area-off.pages.dev/"
+      "https://area-off.pages.dev/",
+      "https://ofarea.live",
+      "https://ofarea.live/",
     ];
   
     if (allowedOrigins.includes(origin)) {
