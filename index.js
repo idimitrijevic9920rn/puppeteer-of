@@ -1,13 +1,21 @@
 const express = require('express');
+const cors = require("cors");
 const puppeteer = require('puppeteer-extra');
 const StealthPlugin = require('puppeteer-extra-plugin-stealth')
 
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.use(cors());
 puppeteer.use(StealthPlugin())
 
+
 app.get('/getContent/:location', async (req, res) => {
+
+    if (!checkOrigin(req.headers.origin)) {
+        return res.send('Error');
+      }
+
     const browser = await puppeteer.launch({
         args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-dev-shm-usage'],
         headless: 'new',
@@ -87,3 +95,17 @@ app.get('/getContent/:location', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+
+
+function checkOrigin(origin) {
+    const allowedOrigins = [
+      "https://area3.pages.dev",
+      "https://area-off.pages.dev/"
+    ];
+  
+    if (allowedOrigins.includes(origin)) {
+      return true;
+    } 
+  
+    return false
+  }
