@@ -130,6 +130,8 @@ function checkOrigin(origin) {
       "https://area-off.pages.dev/",
       "https://ofarea.live",
       "https://ofarea.live/",
+      "https://ofarea.pages.dev",
+      "https://ofarea.pages.dev/",
     ];
   
     if (allowedOrigins.includes(origin)) {
